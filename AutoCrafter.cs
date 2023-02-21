@@ -15,12 +15,13 @@ using static ECommons.GenericHelpers;
 using AutoCrafter.Manager;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Dalamud.Logging;
+using ECommons;
 
 namespace AutoCrafter;
-public sealed class Plugin : IDalamudPlugin
+public sealed class AutoCrafter : IDalamudPlugin
 {
     public string Name => "AutoCrafter";
-    internal static Plugin Instance { get; private set; } = null!;
+    internal static AutoCrafter Instance { get; private set; } = null!;
     internal Configuration config { get; }
     public WindowSystem windowSystem;
     private const string commandName = "/nextmacro";
@@ -28,10 +29,10 @@ public sealed class Plugin : IDalamudPlugin
     private bool isPackage = true;
     private bool isMaterial = true;
 
-    public Plugin(DalamudPluginInterface pluginInterface)
+    public AutoCrafter(DalamudPluginInterface pluginInterface)
     {
         Instance = this;
-        ECommons.ECommons.Init(pluginInterface, this);
+        ECommonsMain.Init(pluginInterface, this);
         config = Svc.PluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
         Click.Initialize();
         BuffManager.Init();
@@ -92,7 +93,7 @@ public sealed class Plugin : IDalamudPlugin
                 return;
             }
 
-            if (Plugin.Instance.config.Repair && RepairManager.GetMinEquippedPercent() < 10)
+            if (config.Repair && RepairManager.GetMinEquippedPercent() < 10)
             {
                 if (TryGetAddonByName<AtkUnitBase>("RecipeNote", out var addon) && addon->IsVisible && Svc.Condition[ConditionFlag.Crafting])
                 {
@@ -174,6 +175,6 @@ public sealed class Plugin : IDalamudPlugin
         Svc.Framework.Update -= Tick;
         Svc.Chat.ChatMessage -= Chat_ChatMessage;
         Svc.Commands.RemoveHandler(commandName);
-        ECommons.ECommons.Dispose();
+        ECommonsMain.Dispose();
     }
 }

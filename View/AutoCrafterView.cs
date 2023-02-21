@@ -31,58 +31,58 @@ internal class AutoCrafterView : Window
 
         ImGui.BeginChild("", ImGui.GetContentRegionAvail() with { Y = ImGui.GetContentRegionAvail().Y - ImGuiHelpers.GetButtonSize("保存并关闭").Y - 6 });
 
-        if (ImGui.Checkbox("是否自动制作", ref Plugin.Instance.config.isAutomatic))
+        if (ImGui.Checkbox("是否自动制作", ref AutoCrafter.Instance.config.isAutomatic))
         {
-            Plugin.Instance.saveConfig();
+            AutoCrafter.Instance.saveConfig();
 
         }
-        if (Plugin.Instance.config.isAutomatic)
+        if (AutoCrafter.Instance.config.isAutomatic)
         {
 
-            if (ImGui.InputInt(":制作次数", ref Plugin.Instance.config.count))
+            if (ImGui.InputInt(":制作次数", ref AutoCrafter.Instance.config.count))
             {
-                if (Plugin.Instance.config.count < 0) Plugin.Instance.config.count = -1;
-                if (Plugin.Instance.config.count > 140) Plugin.Instance.config.count = 140;
+                if (AutoCrafter.Instance.config.count < 0) AutoCrafter.Instance.config.count = -1;
+                if (AutoCrafter.Instance.config.count > 140) AutoCrafter.Instance.config.count = 140;
             }
             ImGuiComponents.HelpMarker("剩余次数,-1代表不结束");
         }
 
-        if (ImGui.InputInt(":宏号", ref Plugin.Instance.config.macro))
+        if (ImGui.InputInt(":宏号", ref AutoCrafter.Instance.config.macro))
         {
-            if (Plugin.Instance.config.macro < 0) Plugin.Instance.config.macro = 0;
-            if (Plugin.Instance.config.macro > 99) Plugin.Instance.config.macro = 99;
+            if (AutoCrafter.Instance.config.macro < 0) AutoCrafter.Instance.config.macro = 0;
+            if (AutoCrafter.Instance.config.macro > 99) AutoCrafter.Instance.config.macro = 99;
         }
-        if (ImGui.Checkbox("是否使用公用宏", ref Plugin.Instance.config.shared))
+        if (ImGui.Checkbox("是否使用公用宏", ref AutoCrafter.Instance.config.shared))
         {
-            Plugin.Instance.saveConfig();
-        }
-
-        if (ImGui.Checkbox("自动修复", ref Plugin.Instance.config.Repair))
-        {
-            Plugin.Instance.saveConfig();
+            AutoCrafter.Instance.saveConfig();
         }
 
-        if (ImGui.Checkbox("使用食物或药水", ref Plugin.Instance.config.AbortIfNoFoodPot))
+        if (ImGui.Checkbox("自动修复", ref AutoCrafter.Instance.config.Repair))
         {
-            Plugin.Instance.saveConfig();
+            AutoCrafter.Instance.saveConfig();
+        }
+
+        if (ImGui.Checkbox("使用食物或药水", ref AutoCrafter.Instance.config.AbortIfNoFoodPot))
+        {
+            AutoCrafter.Instance.saveConfig();
         }
 
 
-        if (Plugin.Instance.config.AbortIfNoFoodPot)
+        if (AutoCrafter.Instance.config.AbortIfNoFoodPot)
         {
             {
                 ImGuiEx.TextV("使用食物:");
-                if (ImGui.BeginCombo("##foodBuff", BuffManager.Food.TryGetFirst(x => x.Id == Plugin.Instance.config.food, out var item) ? $" {item.Name}" : $"{(Plugin.Instance.config.food == 0 ? "Disabled" : $" {Plugin.Instance.config.food}")}"))
+                if (ImGui.BeginCombo("##foodBuff", BuffManager.Food.TryGetFirst(x => x.Id == AutoCrafter.Instance.config.food, out var item) ? $" {item.Name}" : $"{(AutoCrafter.Instance.config.food == 0 ? "Disabled" : $" {AutoCrafter.Instance.config.food}")}"))
                 {
                     if (ImGui.Selectable("Disable"))
                     {
-                        Plugin.Instance.config.food = 0;
+                        AutoCrafter.Instance.config.food = 0;
                     }
                     foreach (var x in BuffManager.GetFood(true))
                     {
                         if (ImGui.Selectable($" {x.Name}"))
                         {
-                            Plugin.Instance.config.food = x.Id;
+                            AutoCrafter.Instance.config.food = x.Id;
                         }
                     }
                     ImGui.EndCombo();
@@ -90,18 +90,18 @@ internal class AutoCrafterView : Window
             }
             {
                 ImGuiEx.TextV("使用药水:");
-                if (ImGui.BeginCombo("##syrupBuff", BuffManager.Syrup.TryGetFirst(x => x.Id == Plugin.Instance.config.syrup, out var item) ? $" {item.Name}" : $"{(Plugin.Instance.config.syrup == 0 ? "Disabled" : $" {Plugin.Instance.config.syrup}")}"))
+                if (ImGui.BeginCombo("##syrupBuff", BuffManager.Syrup.TryGetFirst(x => x.Id == AutoCrafter.Instance.config.syrup, out var item) ? $" {item.Name}" : $"{(AutoCrafter.Instance.config.syrup == 0 ? "Disabled" : $" {AutoCrafter.Instance.config.syrup}")}"))
                 {
 
                     if (ImGui.Selectable("Disable"))
                     {
-                        Plugin.Instance.config.syrup = 0;
+                        AutoCrafter.Instance.config.syrup = 0;
                     }
                     foreach (var x in BuffManager.GetSyrup(true))
                     {
                         if (ImGui.Selectable($" {x.Name}"))
                         {
-                            Plugin.Instance.config.syrup = x.Id;
+                            AutoCrafter.Instance.config.syrup = x.Id;
                         }
                     }
                     ImGui.EndCombo();
@@ -116,7 +116,7 @@ internal class AutoCrafterView : Window
 
         if (ImGui.Button("保存并关闭"))
         {
-            Plugin.Instance.saveConfig();
+            AutoCrafter.Instance.saveConfig();
             IsOpen = false;
             PluginLog.Log("Settings saved.");
         }

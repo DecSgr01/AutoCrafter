@@ -1,6 +1,5 @@
 using System;
 using ClickLib;
-using ClickLib.Clicks;
 using ClickLib.Exceptions;
 using Dalamud.Logging;
 using ECommons.Automation;
