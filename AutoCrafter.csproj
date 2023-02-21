@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <Authors></Authors>
-        <Company></Company>
-        <Version>0.0.0.1</Version>
-        <Description>AutoCrafter</Description>
-    </PropertyGroup>
-
-    <PropertyGroup>
         <TargetFramework>net6.0-windows</TargetFramework>
-        <Platforms>x64</Platforms>
-        <Nullable>enable</Nullable>
+        <PlatformTarget>x64</PlatformTarget>
+        <Nullable>disable</Nullable>
         <LangVersion>latest</LangVersion>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <PublishRelease>true</PublishRelease>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -51,12 +46,21 @@
             <Private>false</Private>
         </Reference>
     </ItemGroup>
+
     <ItemGroup>
-        <PackageReference Include="ECommons" Version="1.0.0.2" />
+        <PackageReference Include="ECommons" Version="1.0.0.3" />
+        <PackageReference Include="DalamudPackager" Version="2.1.10" />
     </ItemGroup>
+
     <ItemGroup>
         <Reference Include="ClickLib">
             <HintPath>.\Lib\ClickLib.dll</HintPath>
         </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="AutoCrafter.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 </Project>

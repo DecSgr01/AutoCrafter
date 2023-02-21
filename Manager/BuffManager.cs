@@ -65,30 +65,30 @@ public unsafe class BuffManager
     }
     internal static bool CheckConsumables(bool use = true)
     {
-        var fooded = checkFood() || Plugin.Instance.config.food == 0;
+        var fooded = checkFood() || AutoCrafter.Instance.config.food == 0;
         if (!fooded)
         {
             if (GetFood(true).Any())
             {
-                if (use) UseItem(Plugin.Instance.config.food, true);
+                if (use) UseItem(AutoCrafter.Instance.config.food, true);
                 return false;
             }
             else
             {
-                fooded = !Plugin.Instance.config.AbortIfNoFoodPot;
+                fooded = !AutoCrafter.Instance.config.AbortIfNoFoodPot;
             }
         }
-        var potted = checkSyrup() || Plugin.Instance.config.syrup == 0;
+        var potted = checkSyrup() || AutoCrafter.Instance.config.syrup == 0;
         if (!potted)
         {
             if (GetSyrup(true).Any())
             {
-                if (use) UseItem(Plugin.Instance.config.syrup, true);
+                if (use) UseItem(AutoCrafter.Instance.config.syrup, true);
                 return false;
             }
             else
             {
-                potted = !Plugin.Instance.config.AbortIfNoFoodPot;
+                potted = !AutoCrafter.Instance.config.AbortIfNoFoodPot;
             }
         }
         var ret = potted && fooded;

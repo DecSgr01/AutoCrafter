@@ -1,0 +1,15 @@
+{
+    "Author": "LuBiao",
+    "Name": "AutoCrafter",
+    "InternalName": "AutoCrafter",
+    "AssemblyVersion": "1.0.0",
+    "Description": "自动制作",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/DecSgr01/AutoCrafter",
+    "DalamudApiLevel": 8,
+    "LoadRequiredState": 0,
+    "LoadSync": false,
+    "LoadPriority": 0,
+    "Punchline": "自动制作",
+    "AcceptsFeedback": true
+}
