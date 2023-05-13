@@ -11,5 +11,14 @@
     "LoadSync": false,
     "LoadPriority": 0,
     "Punchline": "自动制作",
-    "AcceptsFeedback": true
+    "AcceptsFeedback": true,
+    "Tags": null,
+    "IconUrl": null,
+    "DownloadLinkInstall": "https://github.com/DecSgr01/Profiteering/releases/latest/download/latest.zip",
+    "DownloadLinkTesting": "https://github.com/DecSgr01/Profiteering/releases/latest/download/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/DecSgr01/Profiteering/releases/latest/download/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "LastUpdated": "1683817933195"
+
 }

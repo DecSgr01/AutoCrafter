@@ -48,8 +48,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="ECommons" Version="1.0.0.3" />
-        <PackageReference Include="DalamudPackager" Version="2.1.10" />
+        <PackageReference Include="ECommons" Version="2.0.0.4" />
+        <PackageReference Include="DalamudPackager" Version="2.1.11" />
         <PackageReference Include="ClickLib" Version="1.2.0.1" />
     </ItemGroup>
 
