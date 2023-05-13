@@ -2,7 +2,7 @@
     {
         "Author": "post",
         "Name": "AutoCrafter",
-        "InternalName": "auto crafter",
+        "InternalName": "AutoCrafter",
         "AssemblyVersion": "1.0.0",
         "Description": "自动制作",
         "ApplicableVersion": "any",
